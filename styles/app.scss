@@ -1,6 +1,129 @@
+@import 'variables';
+
 * {
     margin: 0;
     padding: 0;
     font-size: 16px;
     font-family: inherit;
+}
+
+
+html{
+    padding: {
+        left: 20vw;
+        right: 20vw;
+    }
+}
+
+header{
+
+    nav{
+        h1{
+            display: inline-block;
+        }
+
+        ul{
+            float: right;
+
+            li{
+            display: inline;
+            margin: {
+                left: 0.8em;
+            }
+            }
+        }
+    }
+}
+
+section {
+
+    &.section-small{
+        padding: 20px 0;
+    }
+
+    &.section-medium{
+        padding: 40px 0;
+    }
+
+    &.section-large{
+        padding: 60px 0;
+    }
+
+    &#about-me-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 18vw auto;
+
+        img{
+            max-width: 100%;
+            border-radius: 100%;
+        }
+    }
+    &#experience-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 50% 50%;
+    
+        h2 {
+            text-align: center;
+        }
+    
+        div:last-child:after {
+            content: '';
+            display: inline-block;
+            border-left: 1px solid #ccc;
+            margin: -20px 0;
+            height: 125px;
+        }
+    }
+
+    div#skills-icons-grid {
+        display: grid;
+        grid-template-columns: repeat(12, auto);
+        justify-content: space-evenly;
+    }
+}
+
+hr{
+    &.section-separator {
+        width: 50vw;
+        margin: 0 auto;
+    }
+}
+
+
+// Media query tablet
+@media (min-width: $layout-breakpoint-tablet) and (max-width: $layout-breakpoint-desktop) {
+    section {
+            &#about-me-grid {
+                grid-template-columns: 35% auto;
+
+                img {
+                    max-width: 100%;
+                    border-radius: 100%;
+                }
+            }
+        }
+}
+
+// Media query mobile
+@media (max-width: $layout-breakpoint-mobile) {
+    section {
+        &#about-me-grid {
+            display: block;
+
+            img {
+                max-width: 100%;
+                border-radius: 100%;
+            }
+        }
+
+        &#experience-grid {
+            display: block;
+        }
+
+        div:last-child:after {
+            display: none !important;
+        }
+    }
 }
